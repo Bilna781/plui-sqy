@@ -34,6 +34,8 @@ def l93(geom):
     return shapely.transform(geom, lambda c: np.column_stack(_T.transform(c[:, 0], c[:, 1])))
 GPU = ["zone-urba", "prescription-surf", "prescription-lin", "prescription-pct",
        "info-surf", "info-lin", "info-pct", "assiette-sup-s", "assiette-sup-l", "assiette-sup-p", "document"]
+COMMUNES_SQY = {"78208": "Elancourt", "78297": "Guyancourt", "78644": "La Verriere", "78356": "Magny-les-Hameaux",
+                "78423": "Montigny-le-Bretonneux", "78621": "Trappes", "78688": "Voisins-le-Bretonneux"}
 NATURE = ["natura-habitat", "natura-oiseaux", "znieff1", "znieff2", "pn", "pnr", "rnn"]
 
 
@@ -93,6 +95,10 @@ def fiche(adresse, out, seulement=None):
     if not parc:
         sys.exit("Aucune parcelle cadastrale sous ce point.")
     p = parc[0]
+    if p["properties"]["idu"][:5] not in COMMUNES_SQY:
+        trouve = geo[0]["properties"].get("label", "")
+        sys.exit(f"Hors de Saint-Quentin-en-Yvelines (trouve : {trouve}). Ce skill ne couvre que "
+                 f"{', '.join(COMMUNES_SQY.values())}. Preciser la commune dans l'adresse.")
     g = shape(p["geometry"])
     g93 = l93(g)
     dossier = out / p["properties"]["idu"]
