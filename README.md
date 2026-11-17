@@ -18,6 +18,11 @@ vérifie un projet de construction.
 > **Projet non officiel, bénévole et sans but commercial.** Il n'est ni édité ni validé par Saint-Quentin-en-Yvelines
 > ou un service de l'État. Ses résultats ne remplacent ni un certificat d'urbanisme ni l'avis du service instructeur.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/comment-ca-marche-sombre.png">
+  <img src="assets/illustrations/comment-ca-marche.png" alt="Comment ça marche : une adresse, la parcelle, les règles citées avec leur page, puis le verdict article par article">
+</picture>
+
 ## Ce qu'il sait faire
 
 | Commande (Claude Code) | Rôle |
@@ -30,6 +35,11 @@ vérifie un projet de construction.
 | `/plui-sqy:veille` | Vérifie si le PLUi a changé depuis la version vérifiée |
 
 Sans commande, une question comme « que puis-je construire au … à Trappes ? » déclenche aussi le skill.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/fiche-parcelle-sombre.png">
+  <img src="assets/illustrations/fiche-parcelle.png" alt="Fiche de parcelle : limites cotées, bâti, espaces verts, recul et emprise au sol (parcelle fictive)">
+</picture>
 
 ## Installation
 
@@ -56,6 +66,11 @@ projet : Codex lit `.agents/skills`), puis appeler `$plui`.
 | 200058782_PLUi_20250410 | archivée | 05/06/2025 |
 | 200058782_PLUi_20230413 | archivée | 26/06/2023 |
 | 200058782_PLUi_20200305 | archivée | 29/09/2020 |
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/veille-sombre.png">
+  <img src="assets/illustrations/veille.png" alt="Veille des versions : six versions du PLUi depuis 2020, trois sources comparées chaque lundi">
+</picture>
 
 Chaque lundi, une GitHub Action compare l'historique officiel du Géoportail de l'Urbanisme, les PDF publiés par SQY
 et le règlement en vigueur ([veille/check.py](veille/check.py)). Au moindre écart, elle ouvre une issue
