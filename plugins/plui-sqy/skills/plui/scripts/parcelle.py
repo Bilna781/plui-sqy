@@ -241,7 +241,7 @@ def selftest(out):
     assert 150 < f["terrain"]["alt_min"] < 190
     assert any(g["nom"] == "Gare de Trappes" and g["a_10min_a_pied"] for g in f["gares"])
     # Temoins prives : PLUI_TEMOINS='[{"adresse": "...", "zone": "URs2f9"}]' (secret GitHub). Seul le rang est affiche.
-    for i, t in enumerate(json.loads(os.environ.get("PLUI_TEMOINS", "[]")), 1):
+    for i, t in enumerate(json.loads(os.environ.get("PLUI_TEMOINS") or "[]"), 1):
         z = fiche(t["adresse"], out)[0]["plui"]["zone"]
         print(f"temoin {i} : {'OK' if z == t['zone'] else 'ZONE CHANGEE'}")
     print("selftest OK")

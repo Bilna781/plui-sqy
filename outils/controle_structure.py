@@ -30,7 +30,7 @@ codex = R / ".agents/skills/plui/SKILL.md"
 if not codex.exists():
     erreurs.append("lien Codex .agents/skills/plui casse")
 # Adresses temoins privees : lues dans le secret PLUI_TEMOINS, jamais ecrites dans le depot.
-privees = [t["adresse"].lower() for t in json.loads(os.environ.get("PLUI_TEMOINS", "[]"))]
+privees = [t["adresse"].lower() for t in json.loads(os.environ.get("PLUI_TEMOINS") or "[]")]
 for f in R.rglob("*"):
     if privees and f.is_file() and ".git" not in f.parts and f.suffix in {".py", ".md", ".json", ".yml", ".txt"}:
         texte = f.read_text(encoding="utf-8", errors="ignore").lower()
