@@ -1,0 +1,15 @@
+# Journal des versions
+
+Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Les tags combinent la version du skill et celle
+du PLUi vérifiée : `v1.0.0+plui-20260219`.
+
+## [1.0.0] - non publiée
+PLUi vérifié : `200058782_PLUi_20260219` (approuvé le 19/02/2026, publié sur le Géoportail de l'Urbanisme le 26/03/2026).
+
+### Ajouté
+- Plugin Claude Code `plui-sqy` : commandes `fiche`, `masse`, `situation`, `regles`, `verifier`, `veille`, et skill
+  général `plui` (aussi disponible pour Codex dans `.agents/skills/plui`).
+- `parcelle.py` : fiche de parcelle (cadastre, PLUi, servitudes, terrain, voisins, zones naturelles, gares,
+  Géorisques, fonds de plan) avec mentions de source.
+- `reglement.py` : extraction d'un article du règlement en vigueur, avec pages.
+- Veille hebdomadaire : versions du Géoportail de l'Urbanisme, PDF du site de SQY, en-têtes du règlement.

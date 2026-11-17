@@ -1,0 +1,11 @@
+name: Nouvelle procédure du PLUi
+description: Modification, révision, mise à jour ou enquête publique repérée.
+labels: [veille]
+body:
+  - type: input
+    id: procedure
+    attributes: { label: Procédure, placeholder: "Modification n°2, enquête publique du ... au ..." }
+    validations: { required: true }
+  - type: input
+    id: lien
+    attributes: { label: Lien officiel }

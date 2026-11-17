@@ -1,0 +1,22 @@
+name: Contrôle
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: "3.12" }
+      - name: Syntaxe Python
+        run: python -m compileall -q plugins veille outils
+      - name: Structure du plugin et absence d'adresses privées
+        env: { PLUI_TEMOINS: "${{ secrets.PLUI_TEMOINS }}" }
+        run: python outils/controle_structure.py
+      - uses: actions/setup-node@v7
+        with: { node-version: "22" }
+      - name: Validation officielle du catalogue et du plugin
+        run: npx -y @anthropic-ai/claude-code plugin validate .

@@ -1,0 +1,14 @@
+name: API ou script en erreur
+description: Un appel (IGN, Géoportail de l'Urbanisme, Géorisques) ou un script échoue.
+labels: [api]
+body:
+  - type: markdown
+    attributes:
+      value: "**Retirez toute adresse du message d'erreur** avant de le coller."
+  - type: input
+    id: script
+    attributes: { label: Script et commande, placeholder: "parcelle.py --seulement masse" }
+  - type: textarea
+    id: erreur
+    attributes: { label: Message d'erreur, render: text }
+    validations: { required: true }

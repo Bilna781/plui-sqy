@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question d'utilisation
+    url: https://github.com/Bilna781/plui-sqy/discussions
+    about: Posez vos questions dans les Discussions.
+  - name: Signalement privé (faille, donnée personnelle)
+    url: https://github.com/Bilna781/plui-sqy/security/advisories/new
+    about: Pour ce qui ne doit pas être public.

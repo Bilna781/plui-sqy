@@ -1,0 +1,12 @@
+{
+  "name": "plui-sqy",
+  "description": "Skill non officiel de lecture du PLUi de Saint-Quentin-en-Yvelines",
+  "owner": { "name": "Contributeurs PLUi SQY" },
+  "plugins": [
+    {
+      "name": "plui-sqy",
+      "source": "./plugins/plui-sqy",
+      "description": "Fiche de parcelle, règles de zone citées, vérification de projet, fonds de plan, veille des versions du PLUi"
+    }
+  ]
+}

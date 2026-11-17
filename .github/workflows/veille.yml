@@ -1,0 +1,22 @@
+name: Veille du PLUi
+on:
+  schedule: [{ cron: "0 6 * * 1" }]   # chaque lundi
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: "3.12" }
+      - id: check
+        run: python veille/check.py
+      - name: Ouvrir une issue si quelque chose a changé
+        if: steps.check.outputs.changements == 'true'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          titre="Veille du PLUi : changement détecté le $(date +%d/%m/%Y)"
+          gh issue create --label veille --title "$titre" --body-file veille/rapport.md

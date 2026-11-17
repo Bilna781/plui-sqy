@@ -1,0 +1,19 @@
+name: Publier une version
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Notes de version depuis le CHANGELOG
+        run: |
+          version="${GITHUB_REF_NAME#v}"; version="${version%%+*}"
+          awk -v v="## [$version]" 'index($0, v)==1{on=1; next} /^## \[/{on=0} on' CHANGELOG.md > notes.md
+          test -s notes.md || echo "Voir CHANGELOG.md" > notes.md
+      - name: Créer la release GitHub
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh release create "$GITHUB_REF_NAME" --title "PLUi SQY $GITHUB_REF_NAME" --notes-file notes.md --verify-tag

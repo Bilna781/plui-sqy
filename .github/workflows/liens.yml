@@ -1,0 +1,21 @@
+name: Liens
+on:
+  schedule: [{ cron: "0 7 1 * *" }]   # le 1er de chaque mois
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  liens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: lycheeverse/lychee-action@v2.9.0
+        id: lychee
+        with:
+          args: --no-progress --max-concurrency 2 README.md NOTICE.md CONTRIBUTING.md "plugins/**/*.md"
+          fail: false
+      - name: Ouvrir une issue si des liens sont cassés
+        if: steps.lychee.outputs.exit_code != 0
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh issue create --label api --title "Liens cassés" --body-file ./lychee/out.md

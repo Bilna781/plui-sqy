@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Si vous citez ce projet, merci d'utiliser ces métadonnées."
+title: "PLUi SQY : skill non officiel de lecture du PLUi de Saint-Quentin-en-Yvelines"
+type: software
+authors:
+  - name: "Contributeurs PLUi SQY"
+repository-code: "https://github.com/Bilna781/plui-sqy"
+license: MIT
+version: "1.0.0"
+keywords: [PLUi, urbanisme, Saint-Quentin-en-Yvelines, Claude Code, Codex, skill]

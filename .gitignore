@@ -1,0 +1,12 @@
+# Fiches generees (contiennent des adresses : donnees personnelles)
+plui-sqy-fiches/
+fiches/
+# Documents telecharges : jamais dans git (liens et empreintes seulement)
+*.pdf
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+# Systeme
+.DS_Store
