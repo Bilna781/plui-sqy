@@ -3,7 +3,7 @@
 Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Les tags combinent la version du skill et celle
 du PLUi vérifiée : `v1.0.0+plui-20260219`.
 
-## [1.0.0] - non publiée
+## [1.0.0] - 2026-11-17
 PLUi vérifié : `200058782_PLUi_20260219` (approuvé le 19/02/2026, publié sur le Géoportail de l'Urbanisme le 26/03/2026).
 
 ### Ajouté
@@ -13,3 +13,5 @@ PLUi vérifié : `200058782_PLUi_20260219` (approuvé le 19/02/2026, publié sur
   Géorisques, fonds de plan) avec mentions de source.
 - `reglement.py` : extraction d'un article du règlement en vigueur, avec pages.
 - Veille hebdomadaire : versions du Géoportail de l'Urbanisme, PDF du site de SQY, en-têtes du règlement.
+- La fiche refuse les adresses situées hors des 7 communes de Saint-Quentin-en-Yvelines.
+- Nouvelles tentatives automatiques quand un service public renvoie une erreur passagère ou une réponse vide.
