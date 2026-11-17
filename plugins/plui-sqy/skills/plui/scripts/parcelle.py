@@ -42,17 +42,19 @@ def get(url, params=None, body=None, raw=False):
         url += "?" + urllib.parse.urlencode(params, safe="|,:")
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"} if data else {})
-    for essai in range(3):  # coupures reseau intermittentes observees sur plusieurs services publics
+    # Coupures intermittentes observees sur plusieurs services publics ; depuis les IP partagees de GitHub Actions,
+    # la Geoplateforme renvoie aussi parfois un 400 ou une reponse vide pour une requete valide (17/11/2026).
+    for essai in range(4):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 return r.read() if raw else json.load(r)
         except urllib.error.HTTPError as e:
-            if e.code < 500 or essai == 2:
+            if e.code not in (400, 429) and e.code < 500 or essai == 3:
                 raise
-        except OSError:
-            if essai == 2:
+        except (OSError, ValueError):  # ValueError : corps vide ou non JSON
+            if essai == 3:
                 raise
-        time.sleep(1 + essai)
+        time.sleep(2 * (essai + 1))
 
 
 def wfs(typename, cql):
