@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v7
         with: { python-version: "3.12" }
       - name: Syntaxe Python
-        run: python -m compileall -q plugins veille outils
+        run: python -m compileall -q plugins veille outils site
       - name: Structure du plugin et absence d'adresses privées
         env: { PLUI_TEMOINS: "${{ secrets.PLUI_TEMOINS }}" }
         run: python outils/controle_structure.py

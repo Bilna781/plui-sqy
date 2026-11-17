@@ -1,0 +1,49 @@
+name: Site et popularité
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Historique de popularité (branche stats)
+        run: |
+          git fetch -q origin stats && git show origin/stats:historique.json > historique.json || echo "{}" > historique.json
+      - name: Collecte du jour
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+        run: python3 site/stats.py historique.json
+      - name: Enregistrer l'historique sur la branche stats
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          d=$(mktemp -d) && cp historique.json "$d/" && cd "$d"
+          git init -q -b stats && git add historique.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -qm "Popularité au $(date +%F)"
+          git push -qf "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" stats
+      - name: Construire le site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 site/build.py historique.json _site
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deploiement
+        uses: actions/deploy-pages@v5

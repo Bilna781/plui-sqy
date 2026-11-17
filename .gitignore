@@ -10,3 +10,4 @@ __pycache__/
 .venv-*/
 # Systeme
 .DS_Store
+_site/

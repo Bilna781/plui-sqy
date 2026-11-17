@@ -10,7 +10,7 @@ le ministère de la Transition écologique ou tout autre service de l'État. Auc
 |---|---|---|
 | Code (scripts, workflows, skill) | MIT | [LICENSE](LICENSE) |
 | Documentation, fiches rédigées, illustrations, logo | CC BY 4.0 | [LICENSE-docs](LICENSE-docs) |
-| Polices Archivo, Public Sans et IBM Plex Mono (logo, site, illustrations) | SIL Open Font License 1.1 | non redistribuées ; chargées depuis Google Fonts. Dans le logo, les textes sont convertis en tracés. La police Marianne, réservée à l'État, n'est pas utilisée. |
+| Polices Archivo, Public Sans et IBM Plex Mono (logo, site, illustrations) | SIL Open Font License 1.1 | sous-ensembles latins redistribués dans `site/polices/` avec leurs licences (`OFL-*.txt`), servis par le site lui-même (aucun appel à Google Fonts). Dans le logo, les textes sont convertis en tracés. La police Marianne, réservée à l'État, n'est pas utilisée. |
 
 Ces licences couvrent uniquement le travail des contributeurs. Elles ne s'appliquent pas aux données et documents
 des tiers listés ci-dessous, qui restent soumis à leurs propres conditions.
