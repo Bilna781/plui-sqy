@@ -6,7 +6,7 @@
     {
       "name": "plui-sqy",
       "source": "./plugins/plui-sqy",
-      "description": "Fiche de parcelle, règles de zone citées, vérification de projet, fonds de plan, veille des versions du PLUi"
+      "description": "Fiche de parcelle, règles de zone citées, vérification de projet, placement sur le cadastre, fonds de plan, veille des versions du PLUi"
     }
   ]
 }

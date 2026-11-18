@@ -3,6 +3,21 @@
 Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Les tags combinent la version du skill et celle
 du PLUi vérifiée : `v1.0.0+plui-20260219`.
 
+## [2.1.0] - 2026-11-18
+PLUi vérifié : `200058782_PLUi_20260219` (inchangé).
+
+### Ajouté
+- `projet.py` et commande `projet` : placement d'un projet sur le cadastre à partir des cotes d'un plan, avec
+  récapitulatif et image à faire confirmer par l'utilisateur avant tout verdict, distances aux limites, emprise,
+  bande constructible de 25 m, empiétement sur les prescriptions, côté sur la voie déduit des routes de la BD TOPO.
+  Documentation : `references/projet-sur-cadastre.md`.
+- Illustration « Projet sur le cadastre » (claire et sombre) dans le README.
+- Workflow `controle.yml` : autotest de `projet.py` ; workflow `sante-api.yml` : `projet.py --selftest-reseau`
+  (routes BD TOPO et parcelles voisines).
+
+### Modifié
+- Description du plugin et du catalogue, `CONTRIBUTING.md` et dépendances du README (matplotlib) mises à jour.
+
 ## [2.0.0] - 2026-11-18
 PLUi vérifié : `200058782_PLUi_20260219` (inchangé).
 

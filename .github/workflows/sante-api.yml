@@ -14,6 +14,8 @@ jobs:
       - name: Autotest sur un lieu public, puis témoins privés (secret)
         env: { PLUI_TEMOINS: "${{ secrets.PLUI_TEMOINS }}" }
         run: uv run plugins/plui-sqy/skills/plui/scripts/parcelle.py --selftest --out /tmp/fiches
+      - name: Autotest réseau du placement d'un projet (routes BD TOPO, parcelles voisines)
+        run: uv run plugins/plui-sqy/skills/plui/scripts/projet.py --selftest-reseau --out /tmp/fiches
       - name: Ouvrir une issue si l'autotest échoue
         if: failure()
         env: { GH_TOKEN: "${{ github.token }}" }

@@ -2,6 +2,9 @@
 
 À utiliser quand l'utilisateur décrit un projet (dimensions, surface de plancher, hauteur, places de stationnement).
 
+**Projet fourni sous forme de plan** : placer d'abord le projet sur le cadastre et faire confirmer les cotes par
+l'utilisateur (`references/projet-sur-cadastre.md`). Le verdict ne s'appuie que sur des mesures au statut `valide`.
+
 ## Données à réunir
 - Fiche de la parcelle (`parcelle.py`) : largeur et profondeur, surface, prescriptions, bâtiments existants.
 - Projet : emprise au sol (débords de toiture compris), surface de plancher, hauteur au faîtage et à l'égout,

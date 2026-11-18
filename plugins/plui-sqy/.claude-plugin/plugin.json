@@ -1,8 +1,8 @@
 {
   "name": "plui-sqy",
   "displayName": "PLUi SQY (non officiel)",
-  "version": "2.0.0",
-  "description": "Lecture non officielle du PLUi de Saint-Quentin-en-Yvelines : fiche de parcelle, règles de zone citées page par page, vérification de projet, fonds de plan de masse et de situation, veille des versions.",
+  "version": "2.1.0",
+  "description": "Lecture non officielle du PLUi de Saint-Quentin-en-Yvelines : fiche de parcelle, règles de zone citées page par page, vérification de projet, placement d'un projet sur le cadastre, fonds de plan de masse et de situation, veille des versions.",
   "author": { "name": "Contributeurs PLUi SQY", "url": "https://github.com/Bilna781" },
   "homepage": "https://github.com/Bilna781/plui-sqy",
   "repository": "https://github.com/Bilna781/plui-sqy",

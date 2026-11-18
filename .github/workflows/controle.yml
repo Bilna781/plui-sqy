@@ -13,6 +13,9 @@ jobs:
         with: { python-version: "3.12" }
       - name: Syntaxe Python
         run: python -m compileall -q plugins veille outils site
+      - uses: astral-sh/setup-uv@v10.3.3
+      - name: Autotest du placement d'un projet sur le cadastre (parcelle fictive, sans réseau)
+        run: uv run plugins/plui-sqy/skills/plui/scripts/projet.py --selftest
       - name: Structure du plugin et absence d'adresses privées
         env: { PLUI_TEMOINS: "${{ secrets.PLUI_TEMOINS }}" }
         run: python outils/controle_structure.py

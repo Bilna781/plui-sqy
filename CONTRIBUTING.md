@@ -15,6 +15,7 @@ Merci ! Le projet est bénévole, non officiel et sans but commercial.
 git clone https://github.com/Bilna781/plui-sqy && cd plui-sqy
 claude plugin marketplace add ./          # puis /plugin install plui-sqy@plui-sqy
 uv run plugins/plui-sqy/skills/plui/scripts/parcelle.py --selftest
+uv run plugins/plui-sqy/skills/plui/scripts/projet.py --selftest   # sans réseau
 python3 veille/check.py
 ```
 

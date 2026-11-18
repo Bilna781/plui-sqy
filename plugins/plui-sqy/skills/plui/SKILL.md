@@ -1,6 +1,6 @@
 ---
 name: plui
-description: Lit le PLUi de Saint-Quentin-en-Yvelines (Trappes, Élancourt, Guyancourt, La Verrière, Magny-les-Hameaux, Montigny-le-Bretonneux, Voisins-le-Bretonneux) pour une adresse ou une parcelle - zone, règles (recul, retrait, emprise au sol, hauteur, espaces verts, stationnement), prescriptions, servitudes, risques, et ce qu'on peut y construire. À utiliser pour toute question de PLU, PLUi, permis de construire, constructibilité, plan de masse ou plan de situation sur ce territoire.
+description: Lit le PLUi de Saint-Quentin-en-Yvelines (Trappes, Élancourt, Guyancourt, La Verrière, Magny-les-Hameaux, Montigny-le-Bretonneux, Voisins-le-Bretonneux) pour une adresse ou une parcelle - zone, règles (recul, retrait, emprise au sol, hauteur, espaces verts, stationnement), prescriptions, servitudes, risques, et ce qu'on peut y construire, y compris placer un projet sur le cadastre à partir d'un plan coté. À utiliser pour toute question de PLU, PLUi, permis de construire, constructibilité, plan de masse ou plan de situation sur ce territoire.
 argument-hint: "[adresse ou lon,lat] [question]"
 ---
 
@@ -15,17 +15,19 @@ chaque réponse qui conclut sur la constructibilité.
 - Fond de plan de masse (PCMI2) ou de situation (PCMI1) seul (commandes `masse` et `situation`).
 - Lecture d'un article du règlement en vigueur pour une zone, avec la page citée (commande `regles`).
 - Comparaison d'un projet aux règles de la zone, avec verdict article par article (commande `verifier`).
+- Placement d'un projet sur le cadastre à partir des cotes d'un plan, après confirmation des cotes par l'utilisateur (commande `projet`).
 - Vérification que le PLUi n'a pas changé depuis la dernière mise à jour du skill (commande `veille`).
 
 ## Scripts
 Dossier des scripts : `${CLAUDE_PLUGIN_ROOT}/skills/plui/scripts/` sous Claude Code ; sinon le dossier `scripts/`
 à côté de ce fichier. Les lancer avec `uv run <script> ...` (dépendances installées automatiquement), ou avec
-`python3` après `pip install shapely pyproj numpy pymupdf`.
+`python3` après `pip install shapely pyproj numpy pymupdf matplotlib`.
 
 | Script | Rôle |
 |---|---|
 | `parcelle.py "<adresse>"` | Fiche complète : écrit `plui-sqy-fiches/<idu>/fiche.json`, `masse.png`, `situation.png`, `CREDITS.txt` |
 | `parcelle.py "<adresse>" --seulement masse` | Fond de plan de masse seul (ou `situation`) |
+| `projet.py <dossier fiche> projet.json` | Place le projet sur le cadastre et mesure distances, emprise, bande de 25 m (voir `references/projet-sur-cadastre.md`) |
 | `reglement.py --zone <code>` | Décode le code de zone (forme, densité, hauteur) |
 | `reglement.py --url <reglement> --zone <code> --article <n>` | Texte de l'article de zone, avec pages |
 | `reglement.py --url <reglement> --commun <n>` | Texte d'un article des dispositions communes (ex. 12 stationnement) |

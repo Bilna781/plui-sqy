@@ -30,11 +30,17 @@ vérifie un projet de construction.
 | `/plui-sqy:fiche <adresse>` | Fiche de la parcelle : cadastre, zone, prescriptions, servitudes, terrain, bâtiments voisins, zones naturelles, gares, risques, fonds de plan |
 | `/plui-sqy:regles <zone> [articles]` | Articles du règlement en vigueur pour un code de zone, avec les pages |
 | `/plui-sqy:verifier <adresse> <projet>` | Verdict article par article d'un projet (recul, retraits, emprise, hauteur, stationnement, espaces verts) |
+| `/plui-sqy:projet <adresse> <plan>` | Place un projet sur le cadastre à partir des cotes d'un plan, après confirmation des cotes par l'utilisateur : distances aux limites, emprise, bande de 25 m |
 | `/plui-sqy:masse <adresse>` | Fond du plan de masse (PCMI2) |
 | `/plui-sqy:situation <adresse>` | Fond du plan de situation (PCMI1) |
 | `/plui-sqy:veille` | Vérifie si le PLUi a changé depuis la version vérifiée |
 
 Sans commande, une question comme « que puis-je construire au … à Trappes ? » déclenche aussi le skill.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/projet-sombre.png">
+  <img src="assets/illustrations/projet.png" alt="Projet sur le cadastre : cotes lues sur le plan (5,00 m de la voie, 2,50 m et 4,50 m des limites latérales), à confirmer par l'utilisateur avant le calcul des distances, de l'emprise et de la bande de 25 m (parcelle fictive)">
+</picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/fiche-parcelle-sombre.png">
@@ -54,7 +60,7 @@ Mise à jour : `/plugin marketplace update plui-sqy`.
 projet : Codex lit `.agents/skills`), puis appeler `$plui`.
 
 **Prérequis** : Python 3.10 ou plus et [uv](https://docs.astral.sh/uv/) (installe les dépendances tout seul), ou
-`pip install shapely pyproj numpy pymupdf`. Aucune clé d'API.
+`pip install shapely pyproj numpy pymupdf matplotlib`. Aucune clé d'API.
 
 ## Suivi des versions du PLUi
 
