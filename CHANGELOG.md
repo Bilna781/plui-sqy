@@ -3,7 +3,8 @@
 Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Les tags combinent la version du skill et celle
 du PLUi vérifiée : `v1.0.0+plui-20260219`.
 
-## [Non publié]
+## [1.0.1] - 2026-11-18
+PLUi vérifié : `200058782_PLUi_20260219` (inchangé).
 
 ### Modifié
 - Veille simplifiée à deux états (« à jour », « version modifiée ») : contrôles sur le Géoportail de l'Urbanisme
