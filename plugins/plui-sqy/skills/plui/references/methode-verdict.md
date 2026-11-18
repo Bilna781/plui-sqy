@@ -20,6 +20,20 @@
 | U 12 et commun 12 | Stationnement | `--article 12`, `--commun 12` |
 | U 13 | Espaces libres, pleine terre, plantations | `--article 13` |
 
+## Prescription d'implantation sur voie (code 15)
+Quand la fiche contient « Implantation des constructions par rapport aux voies et aux emprises publiques », son
+PDF (`urlfic`) reprend l'article 10 des dispositions communes, page 41 du règlement du 19/02/2026. Il vaut pour
+une maison individuelle et s'ajoute aux articles 6 et 7 de la zone :
+- **Recul d'alignement** : toute nouvelle construction est interdite dans la marge figurée sur le plan de zonage.
+  La distance en mètres est lue sur le plan, pas dans le PDF.
+- **Bande constructible** : les constructions ne peuvent s'implanter que sur 25 m de profondeur mesurés depuis
+  l'alignement. Au-delà : extensions accolées à l'existant, limitées à 10 m² d'emprise au sol, et annexes de
+  2,50 m de haut au plus et 15 m² au plus.
+Pour une parcelle profonde (plus de 25 m), calculer la profondeur disponible avant de conclure. Le même texte est
+attaché aux prescriptions linéaires et surfaciques (`lin_15_1`, `surf_15_1`), qui diffèrent seulement par leur
+figuré. Le texte du PDF concerne aussi la diversité commerciale (changement de destination des locaux commerciaux
+en rez-de-chaussée), qui ne concerne pas une maison.
+
 ## Format du verdict
 | Point | Projet | Règle (page) | Verdict |
 |---|---|---|---|

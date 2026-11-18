@@ -14,3 +14,18 @@ Citer le règlement par courts extraits, avec la page, sans modifier le texte.
 
 Limites de requêtes à respecter : géocodage 50/s, WFS 30/s, WMS 40/s, altimétrie 5/s, isochrone 5/s par IP ;
 Géorisques 1 000 par minute. Le script fait une requête par service et par fiche.
+
+## Limites d'extraction des documents du PLUi
+Les documents ont été lus par extraction de **texte brut** des PDF. Ni les cartes ni les images n'ont été analysées.
+- **Plans de zonage et plans de servitudes** : cartes, donc aucune règle exploitable. La zone et les servitudes
+  d'une parcelle viennent du Géoportail de l'Urbanisme.
+- **PPRI de la vallée de la Bièvre (arrêté 661ARR)** : police du PDF mal encodée. Seuls les titres et les zones
+  (rouge, bleue, marron) ont été lus, pas les prescriptions chiffrées de chaque zone. Le skill peut signaler qu'une
+  parcelle est en zone de PPRI, pas dire ce que cette zone impose : renvoyer au PDF ou au service instructeur.
+- **Annexe 9 du règlement (guide éco-jardin du PNR)** : texte décalé d'une lettre, décodé ensuite. Noms de plantes et
+  chiffres peu fiables, non repris dans le skill.
+- **Annexes 2, 3, 5, 7, 8 et 10** : texte propre, noms et chiffres relus dans le PDF (`references/annexes-reglement.md`).
+  Les noms scientifiques de l'annexe 3 reprennent les quelques coquilles du PDF.
+- **Titre VII du règlement (inventaire patrimonial) et documents hors règlement** : analysés dans un graphe de
+  connaissances, pas intégrés au skill. Seules les prescriptions indiquées par la fiche (`urlfic`) sont à lire.
+

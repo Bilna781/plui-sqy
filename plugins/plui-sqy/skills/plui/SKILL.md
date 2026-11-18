@@ -36,7 +36,8 @@ Dossier des scripts : `${CLAUDE_PLUGIN_ROOT}/skills/plui/scripts/` sous Claude C
 2. Lire `fiche.json`. Si le script affiche « ATTENTION : le PLUi en vigueur est ... », le signaler en tête de réponse.
 3. Pour chaque règle utile, lancer `reglement.py` avec l'URL `plui.reglement` de la fiche (toujours la version en
    vigueur) et le code de zone. Lire les paragraphes de l'indice de forme et de densité de la zone. Les règles
-   générales sont dans les articles communes (titre II) : stationnement = `--commun 12`.
+   générales sont dans les articles communes (titre II) : stationnement = `--commun 12`. Pour les dimensions des
+   places, les plantations (essences interdites, distances) ou les vues et jours : `references/annexes-reglement.md`.
 4. Tenir compte des prescriptions de la fiche (espace paysager, linéaire, élément protégé) : elles s'ajoutent aux
    règles de zone. Leur texte est dans le PDF indiqué par `urlfic`.
 5. Répondre avec un tableau article / règle / valeur pour la parcelle, en citant la page du règlement, puis les
@@ -44,9 +45,12 @@ Dossier des scripts : `${CLAUDE_PLUGIN_ROOT}/skills/plui/scripts/` sous Claude C
 6. Terminer par les mentions de `CREDITS.txt` et le rappel « non officiel ».
 
 Détails : [references/lecture-code-zone.md](references/lecture-code-zone.md),
-[references/methode-verdict.md](references/methode-verdict.md), [references/sources.md](references/sources.md).
+[references/methode-verdict.md](references/methode-verdict.md), [references/sources.md](references/sources.md),
+[references/annexes-reglement.md](references/annexes-reglement.md) (stationnement, plantations, invasives, vues et jours).
 
 ## Limites
 - Les hauteurs de la BD TOPO sont des estimations ; les surfaces cadastrales ne remplacent pas un relevé de géomètre.
 - Géorisques coupe parfois la connexion : la fiche continue sans les risques et le signale.
 - Les plans de zonage en image ne sont pas lus : la zone vient du Géoportail de l'Urbanisme.
+- Les PDF ont été lus en texte brut. Le PPRI de la Bièvre n'est pas exploitable (police mal encodée) : signaler la zone sans
+  annoncer ses prescriptions. Détail dans `references/sources.md`.

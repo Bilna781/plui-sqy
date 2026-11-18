@@ -16,7 +16,7 @@ donne la zone, les règles citées page par page dans le règlement en vigueur, 
 vérifie un projet de construction.
 
 > **Projet non officiel, bénévole et sans but commercial.** Il n'est ni édité ni validé par Saint-Quentin-en-Yvelines
-> ou un service de l'État. Ses résultats ne remplacent ni un certificat d'urbanisme ni l'avis du service instructeur.
+> ou un service de l'État. Ses résultats ne remplacent ni un certificat d'urbanisme ni l'avis du service instructeur. Voir les [limites de l'analyse](#limites-de-lanalyse-des-documents).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/comment-ca-marche-sombre.png">
@@ -115,6 +115,21 @@ celui-ci diffère de la version sur laquelle il a été vérifié (`/plui-sqy:ve
 | 200058782_PLUi_20250410 | archivée | 05/06/2025 |
 | 200058782_PLUi_20230413 | archivée | 26/06/2023 |
 | 200058782_PLUi_20200305 | archivée | 29/09/2020 |
+
+## Limites de l'analyse des documents
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/limites-sombre.png">
+  <img src="assets/illustrations/limites.png" alt="Limites : les cartes ne sont lues qu'en texte brut, le PPRI de la Bièvre est signalé sans ses prescriptions, l'annexe 9 est peu fiable. Relisez toujours le PLUi : règlement, plans, certificat d'urbanisme">
+</picture>
+
+Les PDF du PLUi ont été lus en **texte brut** : ni les cartes ni les images ne sont analysées. Les plans de zonage
+et de servitudes ne livrent donc aucune règle, la zone et les servitudes viennent du Géoportail de l'Urbanisme.
+Le **PPRI de la vallée de la Bièvre** a une police mal encodée : le skill sait signaler la zone (rouge, bleue,
+marron), pas les prescriptions qui s'y attachent. Les noms de plantes et les chiffres de l'**annexe 9**
+(guide éco-jardin) sont peu fiables, et cette annexe n'est pas reprise. Les annexes 2, 3, 5, 7, 8 et 10 du règlement
+(plantations, espèces invasives, stationnement, vues et jours) ont été relues et résumées dans
+[`annexes-reglement.md`](plugins/plui-sqy/skills/plui/references/annexes-reglement.md). Détail dans
+[`sources.md`](plugins/plui-sqy/skills/plui/references/sources.md).
 
 ## Données, licences et mentions
 

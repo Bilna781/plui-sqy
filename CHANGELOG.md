@@ -3,6 +3,17 @@
 Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/). Les tags combinent la version du skill et celle
 du PLUi vérifiée : `v1.0.0+plui-20260219`.
 
+## [2.0.0] - 2026-11-18
+PLUi vérifié : `200058782_PLUi_20260219` (inchangé).
+
+### Ajouté
+- `references/annexes-reglement.md` : annexes 2, 3, 5, 7, 8 et 10 du règlement (dimensions des places de stationnement,
+  espèces invasives interdites, distances de plantation, vues et jours), avec leur portée juridique.
+- Prescription d'implantation sur voie : recul d'alignement et bande constructible de 25 m (méthode de vérification).
+- Illustration « Limites » (claire et sombre) dans le README : cartes, PPRI de la Bièvre, annexe 9, relecture du PLUi.
+- Limites d'extraction des documents (texte brut, PPRI de la Bièvre, annexe 9) dans `sources.md`, le `SKILL.md`
+  et le README.
+
 ## [1.0.1] - 2026-11-18
 PLUi vérifié : `200058782_PLUi_20260219` (inchangé).
 
