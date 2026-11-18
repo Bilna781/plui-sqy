@@ -4,7 +4,7 @@
 </picture>
 
 <p>
-  <img src="assets/etiquettes/plui-a-jour.svg" alt="PLUi : à jour 19/02/2026">
+  <a href="#suivi-des-versions-du-plui"><img src="https://bilna781.github.io/plui-sqy/etat.svg" alt="état du PLUi : à jour ou version modifiée"></a>
   <img src="assets/etiquettes/statut.svg" alt="statut : non officiel">
   <img src="assets/etiquettes/donnees.svg" alt="données : IGN, GPU, Géorisques">
   <img src="assets/etiquettes/licence.svg" alt="licence : MIT, CC BY 4.0">
@@ -58,6 +58,55 @@ projet : Codex lit `.agents/skills`), puis appeler `$plui`.
 
 ## Suivi des versions du PLUi
 
+### États possibles
+
+Le badge en tête de page est recalculé chaque jour à partir du Géoportail de l'Urbanisme. Il n'a que deux états :
+
+| État | Badge | Signification | Que faire |
+|---|---|---|---|
+| **À jour** | vert, « à jour » suivi de la date de la version | La version en vigueur sur le Géoportail est celle que ce skill a vérifiée, et rien n'a changé depuis | Rien : le skill cite le règlement en vigueur |
+| **Version modifiée** | rouge, « version modifiée » | Une nouvelle version est publiée, ou le document en vigueur a changé, et le skill n'est pas encore revérifié | Contrôler chaque règle citée dans le règlement en vigueur, ou attendre la mise à jour du skill |
+
+Une enquête publique, une concertation ou une délibération ne changent pas l'état : tant que le Géoportail ne publie
+pas de nouvelle version, le règlement en vigueur reste celui qui a été vérifié. Une version devient officielle à sa
+publication sur le Géoportail, parfois des semaines après la date de l'acte (acte du 19/02/2026, publié le 26/03/2026).
+
+### Comment fonctionne la veille
+
+[veille/check.py](veille/check.py) compare quatre contrôles, tous sur des données structurées (aucun mot lu dans une page web) :
+
+| # | Contrôle | Source |
+|---|---|---|
+| 1 | Nouvelle version, changement de statut ou de date de mise à jour | API du Géoportail de l'Urbanisme (`versions/index.json`) |
+| 2 | Pièce ajoutée, retirée ou renommée dans le document en vigueur | Liste des fichiers du Géoportail (empreinte dans `veille/etat.json`) |
+| 3 | Règlement modifié sans nouvelle version | En-têtes HTTP du PDF (date, taille, ETag) |
+| 4 | Skill vérifié sur une autre version que celle en vigueur | `plugins/plui-sqy/skills/plui/references/version.json` |
+
+Le moindre écart donne l'état « version modifiée ». Le script ne dépend d'aucune bibliothèque et fait une requête par
+contrôle, espacées d'une seconde.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/veille-sombre.png">
+  <img src="assets/illustrations/veille.png" alt="Veille des versions : six versions du PLUi depuis 2020, comparées chaque lundi">
+</picture>
+
+### Workflow quand une nouvelle version est publiée
+
+1. **Détection** : chaque lundi à 06:00 UTC, l'action `veille.yml` lance `veille/check.py`. En cas d'écart, elle ouvre
+   une issue « Veille du PLUi » avec le rapport.
+2. **Relecture** : on compare l'ancienne et la nouvelle version, on adapte le skill (règles, scripts, `version.json`)
+   et le tableau des versions ci-dessous.
+3. **Enregistrement** : `python veille/check.py --maj` met à jour les références (`versions/index.json`,
+   `veille/etat.json`), puis commit. Une nouvelle version du skill est publiée, tag combinant skill et PLUi
+   (`v1.0.0+plui-20260219`). Pour être prévenu : *Watch → Custom → Releases*.
+4. **Badge** : l'action `site.yml` le recalcule à chaque push sur `main` et chaque jour à 04:17 UTC ; il repasse à
+   « à jour ».
+
+Le skill lit toujours le règlement **en vigueur** (lien fourni par le Géoportail de l'Urbanisme) et signale quand
+celui-ci diffère de la version sur laquelle il a été vérifié (`/plui-sqy:veille` fait ce même contrôle à la demande).
+
+### Versions suivies
+
 | Version du PLUi | Statut | Publiée sur le Géoportail de l'Urbanisme |
 |---|---|---|
 | 200058782_PLUi_20260219 | **en vigueur**, vérifiée par ce skill | 26/03/2026 |
@@ -66,19 +115,6 @@ projet : Codex lit `.agents/skills`), puis appeler `$plui`.
 | 200058782_PLUi_20250410 | archivée | 05/06/2025 |
 | 200058782_PLUi_20230413 | archivée | 26/06/2023 |
 | 200058782_PLUi_20200305 | archivée | 29/09/2020 |
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/illustrations/veille-sombre.png">
-  <img src="assets/illustrations/veille.png" alt="Veille des versions : six versions du PLUi depuis 2020, trois sources comparées chaque lundi">
-</picture>
-
-Chaque lundi, une GitHub Action compare l'historique officiel du Géoportail de l'Urbanisme, les PDF publiés par SQY
-et le règlement en vigueur ([veille/check.py](veille/check.py)). Au moindre écart, elle ouvre une issue
-« Veille du PLUi ». Après relecture, une nouvelle version du skill est publiée : les tags combinent version du skill
-et version du PLUi (`v1.0.0+plui-20260219`). Pour être prévenu : *Watch → Custom → Releases*.
-
-Le skill lit toujours le règlement **en vigueur** (lien fourni par le Géoportail de l'Urbanisme) et signale quand
-celui-ci diffère de la version sur laquelle il a été vérifié.
 
 ## Données, licences et mentions
 

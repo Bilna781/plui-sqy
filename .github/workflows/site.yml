@@ -41,6 +41,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 site/build.py historique.json _site
+      - name: Étiquette d'état du PLUi
+        continue-on-error: true  # un Géoportail indisponible ne doit pas bloquer le site
+        run: python3 veille/check.py --etiquette _site/etat.svg
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

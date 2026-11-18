@@ -11,3 +11,6 @@ __pycache__/
 # Systeme
 .DS_Store
 _site/
+
+# Rapport de veille (genere a chaque passage, sert de corps a l issue)
+veille/rapport.md
