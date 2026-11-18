@@ -18,5 +18,9 @@ jobs:
         if: steps.check.outputs.changements == 'true'
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
+          # une seule issue ouverte à la fois : on n'en rouvre pas tant que --maj n'a pas été fait et l'issue fermée
+          if [ -n "$(gh issue list --label veille --state open --json number --jq '.[].number')" ]; then
+            echo "Une issue de veille est déjà ouverte, rien à créer."; exit 0
+          fi
           titre="Veille du PLUi : changement détecté le $(date +%d/%m/%Y)"
           gh issue create --label veille --title "$titre" --body-file veille/rapport.md

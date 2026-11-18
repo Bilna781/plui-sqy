@@ -93,7 +93,7 @@ contrôle, espacées d'une seconde.
 ### Workflow quand une nouvelle version est publiée
 
 1. **Détection** : chaque lundi à 06:00 UTC, l'action `veille.yml` lance `veille/check.py`. En cas d'écart, elle ouvre
-   une issue « Veille du PLUi » avec le rapport.
+   une issue « Veille du PLUi » avec le rapport (une seule à la fois : tant qu'elle reste ouverte, la veille n'en rouvre pas).
 2. **Relecture** : on compare l'ancienne et la nouvelle version, on adapte le skill (règles, scripts, `version.json`)
    et le tableau des versions ci-dessous.
 3. **Enregistrement** : `python veille/check.py --maj` met à jour les références (`versions/index.json`,
