@@ -4,7 +4,7 @@
 </picture>
 
 <p>
-  <a href="#suivi-des-versions-du-plui"><img src="https://bilna781.github.io/plui-sqy/etat.svg" alt="état du PLUi : à jour ou version modifiée"></a>
+  <a href="#suivi-des-versions-du-plui"><img src="https://bilna781.github.io/plui-sqy-skill/etat.svg" alt="état du PLUi : à jour ou version modifiée"></a>
   <img src="assets/etiquettes/statut.svg" alt="statut : non officiel">
   <img src="assets/etiquettes/donnees.svg" alt="données : IGN, GPU, Géorisques">
   <img src="assets/etiquettes/licence.svg" alt="licence : MIT, CC BY 4.0">
@@ -51,10 +51,10 @@ Sans commande, une question comme « que puis-je construire au … à Trappes ? 
 
 **Claude Code**
 ```
-/plugin marketplace add Bilna781/plui-sqy
-/plugin install plui-sqy@plui-sqy
+/plugin marketplace add Bilna781/plui-sqy-skill
+/plugin install plui-sqy-skill@plui-sqy-skill
 ```
-Mise à jour : `/plugin marketplace update plui-sqy`.
+Mise à jour : `/plugin marketplace update plui-sqy-skill`.
 
 **Codex** : copier le dossier `.agents/skills/plui` dans le dossier de skills de Codex (ou garder ce dépôt comme
 projet : Codex lit `.agents/skills`), puis appeler `$plui`.
